@@ -14,11 +14,11 @@ namespace SUIVI_FACTURES_FOURNISSEURS
         private static SqlCommand cmd = new SqlCommand("", con);
         private static SqlDataReader dr;
 
-        public static string Login(string centre, string user, string password)
+        public static bool Login(string centre, string user, string password)
         {
-            string u = null;
+            bool isValid = false;
 
-            string req = string.Format("select * from User where ville = '{0}' and name_user = '{1}' and password = '{2}'",
+            string req = string.Format("select * from [User] where ville = '{0}' and name_user = '{1}' and password = '{2}'",
                                        centre, user, password);
 
             cmd.CommandText = req;
@@ -27,12 +27,12 @@ namespace SUIVI_FACTURES_FOURNISSEURS
 
             dr = cmd.ExecuteReader();
             if (dr.HasRows)
-                u = user;
+                isValid = true;
 
             dr.Close();
             con.Close();
 
-            return u;
+            return isValid;
         }
     }
 }

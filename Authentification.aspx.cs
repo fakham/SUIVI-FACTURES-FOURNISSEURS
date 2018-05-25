@@ -35,28 +35,31 @@ namespace SUIVI_FACTURES_FOURNISSEURS
 
         protected void btn_connecter_Click(object sender, EventArgs e)
         {
-            string user = ADO.Login(list_centreGestion.Text, list_utilisateurs.Text, txt_password.Text);
+            if(ADO.Login(list_centreGestion.Text, list_utilisateurs.Text, txt_password.Text))
+                Session["user"] = list_utilisateurs.Text;
 
-            if (user != null)
-                Session["user"] = user;
-
-            if (user == null)
-                Response.Write("L'utilisateur n'existe pas!");
-
-            else if (user.Equals("ADMIN"))
-                Response.Redirect("page admin");
-
-            else if (user.Equals("SECRETAIRE CENTRE"))
-                Response.Redirect("page SECRETAIRE CENTRE");
-
-            else if (user.Equals("COMPTABLE CENTRE"))
-                Response.Redirect("page COMPTABLE CENTRE");
-
-            else if (user.Equals("SECRETAIRE COMPTABILITE SIEGE"))
-                Response.Redirect("page SECRETAIRE COMPTABILITE SIEGE");
-
-            else if (user.Equals("COMPTABLE REGLEMENT"))
-                Response.Redirect("page COMPTABLE REGLEMENT");
+            switch(Session["user"].ToString())
+            {
+                case "ADMIN":
+                    Response.Redirect("Admin.aspx");
+                    break;
+                case "SECRETAIRE CENTRE":
+                    Response.Redirect("page SECRETAIRE CENTRE");
+                    break;
+                case "COMPTABLE CENTRE":
+                    Response.Redirect("page COMPTABLE CENTRE");
+                    break;
+                case "SECRETAIRE COMPTABILITE SIEGE":
+                    Response.Redirect("page SECRETAIRE COMPTABILITE SIEGE");
+                    break;
+                case "COMPTABLE REGLEMENT":
+                    Response.Redirect("page COMPTABLE REGLEMENT");
+                    break;
+                default:
+                    Response.Write("L'utilisateur n'existe pas!");
+                    break;
+            }
+            
         }                                                  
     }                                                      
 }                                                          
