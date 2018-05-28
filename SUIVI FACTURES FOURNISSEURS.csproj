@@ -67,6 +67,8 @@
   <ItemGroup>
     <Content Include="Admin.aspx" />
     <Content Include="Authentification.aspx" />
+    <Content Include="Fournisseur.aspx" />
+    <Content Include="ListeFournisseurs.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -84,6 +86,20 @@
     </Compile>
     <Compile Include="Authentification.aspx.designer.cs">
       <DependentUpon>Authentification.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fournisseur.aspx.cs">
+      <DependentUpon>Fournisseur.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fournisseur.aspx.designer.cs">
+      <DependentUpon>Fournisseur.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListeFournisseurs.aspx.cs">
+      <DependentUpon>ListeFournisseurs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListeFournisseurs.aspx.designer.cs">
+      <DependentUpon>ListeFournisseurs.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
